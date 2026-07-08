@@ -15,5 +15,11 @@ Page({
     wx.navigateTo({
       url: "/pages/probe/probe"
     });
+  },
+
+  goError() {
+    wx.navigateTo({
+      url: "/pages/error/error"
+    });
   }
 });

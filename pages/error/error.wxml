@@ -1,0 +1,24 @@
+<view class="page" data-testid="error-page">
+  <view class="card">
+    <view class="title">错误态验证</view>
+    <view class="muted">最近状态：{{lastStatusCode || "未触发"}}</view>
+    <view class="muted">最近错误码：{{lastCode || "无"}}</view>
+    <button class="primary-button error-bad-request-trigger" bindtap="triggerBadRequest" loading="{{loading}}" data-testid="error-bad-request-trigger">触发 400</button>
+    <button class="secondary-button error-server-trigger" bindtap="triggerServerError" loading="{{loading}}" data-testid="error-server-trigger">触发 500</button>
+    <view wx:if="{{state === 'loading'}}" class="status error-loading" data-testid="error-loading">
+      请求中
+    </view>
+    <view wx:elif="{{state === 'idle'}}" class="status error-idle" data-testid="error-idle">
+      {{message}}
+    </view>
+    <view wx:elif="{{state === 'badRequest'}}" class="status status-error error-bad-request" data-testid="error-bad-request">
+      400：{{message}}
+    </view>
+    <view wx:elif="{{state === 'serverError'}}" class="status status-error error-server" data-testid="error-server">
+      500：{{message}}
+    </view>
+    <view wx:else class="status status-error error-unexpected" data-testid="error-unexpected">
+      {{message}}
+    </view>
+  </view>
+</view>

@@ -5,5 +5,6 @@
     <button class="primary-button health-entry" bindtap="goHealth" data-testid="health-entry">健康检查</button>
     <button class="secondary-button session-entry" bindtap="goSession" data-testid="session-entry">测试登录</button>
     <button class="secondary-button probe-entry" bindtap="goProbe" data-testid="probe-entry">探针读写</button>
+    <button class="secondary-button error-entry" bindtap="goError" data-testid="error-entry">错误态验证</button>
   </view>
 </view>

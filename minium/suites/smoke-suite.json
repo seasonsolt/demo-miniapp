@@ -14,6 +14,11 @@
       "pkg": "probe_smoke_test",
       "class_name": "ProbeSmokeTest",
       "case_name": "test_probe_write_read_echo"
+    },
+    {
+      "pkg": "error_smoke_test",
+      "class_name": "ErrorSmokeTest",
+      "case_name": "test_bad_request_and_server_error_states"
     }
   ]
 }

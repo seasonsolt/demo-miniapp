@@ -1,0 +1,7 @@
+.secondary-button {
+  margin-top: 20rpx;
+}
+
+.status {
+  min-height: 48rpx;
+}
