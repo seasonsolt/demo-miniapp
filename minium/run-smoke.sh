@@ -33,24 +33,33 @@ PY
 echo "OK preflight 全部通过；project_commit_sha=$PROJECT_SHA"
 echo "RUN $MINIUM_RUN -m health_smoke_test -c $OUT_DIR/minium.json"
 cd "$HERE/suites"
-"$MINIUM_RUN" -m health_smoke_test -c "$OUT_DIR/minium.json" -g || true
+rm -f "$OUT_DIR/summary.json"
+set +e
+"$MINIUM_RUN" -m health_smoke_test -c "$OUT_DIR/minium.json" -g
+MINIUM_EXIT=$?
+set -e
 
-python3 - "$OUT_DIR/summary.json" <<'PY'
+python3 - "$OUT_DIR/summary.json" "$MINIUM_EXIT" <<'PY'
 import json, sys
+summary_path = sys.argv[1]
+minium_exit = int(sys.argv[2])
 try:
-    summary = json.load(open(sys.argv[1]))
+    summary = json.load(open(summary_path))
 except Exception as exc:
-    print(f"FAIL: 无法读取 summary.json（{exc}）")
+    print(f"FAIL: 无法读取 summary.json（{exc}）；minium_exit={minium_exit}")
     sys.exit(1)
 tests = summary.get("test_num", 0)
 errors = summary.get("errors") or []
 failures = summary.get("failures") or []
 if tests < 1:
-    print("FAIL: 0 条用例被执行")
+    print(f"FAIL: 0 条用例被执行；minium_exit={minium_exit}")
     sys.exit(1)
 if errors or failures:
     print(f"FAIL: 用例未通过（errors={len(errors)} failures={len(failures)}）")
     print(str((errors or failures)[0])[:300])
+    sys.exit(1)
+if minium_exit != 0:
+    print(f"FAIL: minium 退出码异常但 summary 未记录失败；minium_exit={minium_exit}")
     sys.exit(1)
 print(f"OK summary 重算通过：tests={tests} errors=0 failures=0")
 PY
