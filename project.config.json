@@ -8,6 +8,8 @@
     "urlCheck": false,
     "es6": true,
     "postcss": true,
-    "minified": false
-  }
+    "minified": false,
+    "autoAudits": false
+  },
+  "libVersion": "3.0.0"
 }
