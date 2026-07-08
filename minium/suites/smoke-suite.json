@@ -9,6 +9,11 @@
       "pkg": "session_smoke_test",
       "class_name": "SessionSmokeTest",
       "case_name": "test_login_query_and_missing_token_probe"
+    },
+    {
+      "pkg": "probe_smoke_test",
+      "class_name": "ProbeSmokeTest",
+      "case_name": "test_probe_write_read_echo"
     }
   ]
 }

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/health/health",
-    "pages/session/session"
+    "pages/session/session",
+    "pages/probe/probe"
   ],
   "window": {
     "navigationBarTitleText": "E2E 基准小程序",

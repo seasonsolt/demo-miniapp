@@ -7,6 +7,7 @@
 - 首页：`pages/index/index`
 - 健康检查页：`pages/health/health`
 - 测试登录页：`pages/session/session`
+- 探针读写页：`pages/probe/probe`
 
 ## 本地服务
 
@@ -18,7 +19,7 @@ apiBase=http%3A%2F%2F127.0.0.1%3A18082
 
 ## Minium
 
-当前仓库包含最小 smoke 套件，用于验证首页启动、跳转健康页、健康状态展示、测试登录、会话查询和缺 token 拒绝反馈；测试登录页也提供无效 token 状态入口。
+当前仓库包含最小 smoke 套件，用于验证首页启动、跳转健康页、健康状态展示、测试登录、会话查询、缺 token 拒绝反馈、探针写入、探针读取和回显一致性；测试登录页也提供无效 token 状态入口。
 
 ```bash
 ./minium/run-smoke.sh

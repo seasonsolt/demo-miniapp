@@ -1,0 +1,29 @@
+<view class="page" data-testid="probe-page">
+  <view class="card">
+    <view class="title">探针读写</view>
+    <view class="muted">探针 ID：{{probeId}}</view>
+    <view class="muted">预期值：{{expectedValue}}</view>
+    <button class="primary-button probe-write" bindtap="writeProbe" loading="{{loading}}" data-testid="probe-write">写入探针</button>
+    <button class="secondary-button probe-read" bindtap="readProbe" loading="{{loading}}" data-testid="probe-read">读取探针</button>
+    <button class="secondary-button probe-reset" bindtap="resetProbe" loading="{{loading}}" data-testid="probe-reset">清空探针</button>
+    <button class="secondary-button probe-invalid-write" bindtap="writeInvalidProbe" loading="{{loading}}" data-testid="probe-invalid-write">非法写入</button>
+    <view wx:if="{{loading}}" class="status probe-loading" data-testid="probe-loading">
+      请求中
+    </view>
+    <view wx:elif="{{state === 'empty'}}" class="status probe-empty" data-testid="probe-empty">
+      {{message}}
+    </view>
+    <view wx:elif="{{state === 'success' && mode === 'write'}}" class="status status-success probe-write-success" data-testid="probe-write-success">
+      写入成功：{{lastValue}}
+    </view>
+    <view wx:elif="{{state === 'success' && mode === 'read' && echoMatched}}" class="status status-success probe-echo-match" data-testid="probe-echo-match">
+      回显一致：{{lastValue}}
+    </view>
+    <view wx:elif="{{state === 'success'}}" class="status status-success probe-success" data-testid="probe-success">
+      {{message}}：{{lastValue}}
+    </view>
+    <view wx:else class="status status-error probe-error" data-testid="probe-error">
+      {{message}}
+    </view>
+  </view>
+</view>
