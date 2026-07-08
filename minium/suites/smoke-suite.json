@@ -1,0 +1,14 @@
+{
+  "case_list": [
+    {
+      "pkg": "health_smoke_test",
+      "class_name": "HealthSmokeTest",
+      "case_name": "test_home_to_health_success"
+    },
+    {
+      "pkg": "session_smoke_test",
+      "class_name": "SessionSmokeTest",
+      "case_name": "test_login_query_and_missing_token_probe"
+    }
+  ]
+}

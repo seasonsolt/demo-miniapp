@@ -3,5 +3,6 @@
     <view class="title">E2E 基准小程序</view>
     <view class="muted">用于 Minium 验证本地确定性栈、页面导航和健康检查。</view>
     <button class="primary-button health-entry" bindtap="goHealth" data-testid="health-entry">健康检查</button>
+    <button class="secondary-button session-entry" bindtap="goSession" data-testid="session-entry">测试登录</button>
   </view>
 </view>

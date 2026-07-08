@@ -19,6 +19,10 @@ command -v "$MINIUM_RUN" >/dev/null 2>&1 || fail "找不到 Minium 运行命令 
 git -C "$PROJECT_ROOT" rev-parse HEAD >/dev/null 2>&1 || fail "项目路径不是 git 检出，无法记录 project_commit_sha"
 
 PROJECT_SHA="$(git -C "$PROJECT_ROOT" rev-parse HEAD)"
+PROJECT_DIRTY="false"
+if [ -n "$(git -C "$PROJECT_ROOT" status --porcelain)" ]; then
+  PROJECT_DIRTY="true"
+fi
 mkdir -p "$OUT_DIR"
 
 python3 - "$HERE/minium.base.json" "$OUT_DIR/minium.json" "$PROJECT_ROOT" "$DEVTOOLS_CLI" "$OUT_DIR" <<'PY'
@@ -30,12 +34,12 @@ cfg.update(project_path=project, dev_tool_path=cli, outputs=outputs)
 json.dump(cfg, open(out, "w"), ensure_ascii=False, indent=2)
 PY
 
-echo "OK preflight 全部通过；project_commit_sha=$PROJECT_SHA"
-echo "RUN $MINIUM_RUN -m health_smoke_test -c $OUT_DIR/minium.json"
+echo "OK preflight 全部通过；project_commit_sha=$PROJECT_SHA project_dirty=$PROJECT_DIRTY"
+echo "RUN $MINIUM_RUN -s $HERE/suites/smoke-suite.json -c $OUT_DIR/minium.json"
 cd "$HERE/suites"
 rm -f "$OUT_DIR/summary.json"
 set +e
-"$MINIUM_RUN" -m health_smoke_test -c "$OUT_DIR/minium.json" -g
+"$MINIUM_RUN" -s "$HERE/suites/smoke-suite.json" -c "$OUT_DIR/minium.json" -g
 MINIUM_EXIT=$?
 set -e
 
@@ -64,4 +68,4 @@ if minium_exit != 0:
 print(f"OK summary 重算通过：tests={tests} errors=0 failures=0")
 PY
 
-echo "OK smoke 完成；证据见 $OUT_DIR，project_commit_sha=$PROJECT_SHA"
+echo "OK smoke 完成；证据见 $OUT_DIR，project_commit_sha=$PROJECT_SHA project_dirty=$PROJECT_DIRTY"

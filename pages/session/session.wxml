@@ -1,0 +1,28 @@
+<view class="page" data-testid="session-page">
+  <view class="card">
+    <view class="title">测试登录</view>
+    <view class="muted">当前账号：{{account || "未登录"}}</view>
+    <button class="primary-button session-login" bindtap="login" loading="{{loading}}" data-testid="session-login">登录测试账号</button>
+    <button class="secondary-button session-query" bindtap="querySession" loading="{{loading}}" data-testid="session-query">查询会话</button>
+    <button class="secondary-button session-probe-missing" bindtap="probeWithoutToken" loading="{{loading}}" data-testid="session-probe-missing">无 token 探针</button>
+    <button class="secondary-button session-use-invalid" bindtap="useInvalidToken" data-testid="session-use-invalid">使用无效 token</button>
+    <view wx:if="{{state === 'loggedOut'}}" class="status session-logged-out" data-testid="session-logged-out">
+      未登录
+    </view>
+    <view wx:elif="{{state === 'loginSuccess'}}" class="status status-success session-login-success" data-testid="session-login-success">
+      登录成功：{{account}}
+    </view>
+    <view wx:elif="{{state === 'authenticated'}}" class="status status-success session-authenticated" data-testid="session-authenticated">
+      会话有效：{{account}}
+    </view>
+    <view wx:elif="{{state === 'missingToken'}}" class="status status-error session-missing-token" data-testid="session-missing-token">
+      {{message}}
+    </view>
+    <view wx:elif="{{state === 'invalidToken'}}" class="status status-error session-invalid-token" data-testid="session-invalid-token">
+      {{message}}
+    </view>
+    <view wx:else class="status status-error session-error" data-testid="session-error">
+      {{message}}
+    </view>
+  </view>
+</view>

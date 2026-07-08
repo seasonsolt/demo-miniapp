@@ -1,6 +1,7 @@
 App({
   globalData: {
-    apiBase: "http://127.0.0.1:18082"
+    apiBase: "http://127.0.0.1:18082",
+    sessionToken: ""
   },
 
   onLaunch(options) {

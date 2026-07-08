@@ -35,6 +35,13 @@ page {
   color: #ffffff;
 }
 
+.secondary-button {
+  border-radius: 44rpx;
+  border: 2rpx solid #1f6feb;
+  background: #ffffff;
+  color: #1f6feb;
+}
+
 .status {
   margin-top: 20rpx;
   padding: 20rpx;
