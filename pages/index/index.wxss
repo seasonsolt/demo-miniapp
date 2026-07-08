@@ -6,3 +6,7 @@
   width: 100%;
   margin-top: 20rpx;
 }
+
+.test-data-entry-hidden {
+  margin-top: 20rpx;
+}

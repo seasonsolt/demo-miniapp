@@ -1,0 +1,36 @@
+<view class="page" data-testid="test-data-page">
+  <view class="card">
+    <view class="title">测试数据</view>
+    <view class="muted">播种探针：{{seedId}}</view>
+    <view class="muted">预期值：{{expectedValue}}</view>
+
+    <view wx:if="{{state === 'blocked'}}" class="status status-error test-data-blocked" data-testid="test-data-blocked">
+      {{message}}
+    </view>
+
+    <block wx:else>
+      <button class="primary-button test-data-reset" bindtap="resetData" loading="{{loading}}" data-testid="test-data-reset">清理 TEST_ 数据</button>
+      <button class="secondary-button test-data-seed" bindtap="seedData" loading="{{loading}}" data-testid="test-data-seed">播种确定数据</button>
+      <button class="secondary-button test-data-read" bindtap="readSeededProbe" loading="{{loading}}" data-testid="test-data-read">读取播种探针</button>
+
+      <view wx:if="{{loading}}" class="status test-data-loading" data-testid="test-data-loading">
+        请求中
+      </view>
+      <view wx:elif="{{state === 'ready'}}" class="status test-data-ready" data-testid="test-data-ready">
+        {{message}}
+      </view>
+      <view wx:elif="{{state === 'resetDone'}}" class="status status-success test-data-reset-done" data-testid="test-data-reset-done">
+        Reset 完成：已清理 {{deletedCount}} 条 TEST_ 数据
+      </view>
+      <view wx:elif="{{state === 'seedDone' && echoMatched}}" class="status status-success test-data-seed-done" data-testid="test-data-seed-done">
+        Seed 完成：{{seededCount}} 条，{{lastValue}}
+      </view>
+      <view wx:elif="{{state === 'readDone' && echoMatched}}" class="status status-success test-data-read-done" data-testid="test-data-read-done">
+        播种读取一致：{{lastValue}}
+      </view>
+      <view wx:else class="status status-error test-data-error" data-testid="test-data-error">
+        {{message}}
+      </view>
+    </block>
+  </view>
+</view>

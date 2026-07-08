@@ -4,7 +4,8 @@
     "pages/health/health",
     "pages/session/session",
     "pages/probe/probe",
-    "pages/error/error"
+    "pages/error/error",
+    "pages/test-data/test-data"
   ],
   "window": {
     "navigationBarTitleText": "E2E 基准小程序",

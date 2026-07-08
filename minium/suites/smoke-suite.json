@@ -16,6 +16,11 @@
       "case_name": "test_probe_write_read_echo"
     },
     {
+      "pkg": "test_data_smoke_test",
+      "class_name": "TestDataSmokeTest",
+      "case_name": "test_guarded_reset_seed_flow"
+    },
+    {
       "pkg": "error_smoke_test",
       "class_name": "ErrorSmokeTest",
       "case_name": "test_bad_request_and_server_error_states"
