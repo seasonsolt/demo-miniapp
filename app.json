@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/health/health"
+  ],
+  "window": {
+    "navigationBarTitleText": "E2E 基准小程序",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8fa"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

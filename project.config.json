@@ -1,0 +1,13 @@
+{
+  "description": "demo-miniapp for Minium E2E baseline",
+  "appid": "touristappid",
+  "projectname": "demo-miniapp",
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": false
+  }
+}

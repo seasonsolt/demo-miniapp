@@ -1,0 +1,13 @@
+{
+  "base_comment": "机器无关基础配置;project_path/dev_tool_path/outputs 由 run-smoke.sh 注入",
+  "platform": "ide",
+  "app": "wx",
+  "debug_mode": "info",
+  "close_ide": false,
+  "no_assert_capture": false,
+  "auto_relaunch": true,
+  "audits": false,
+  "project_path": "__INJECT_PROJECT_PATH__",
+  "dev_tool_path": "__INJECT_DEV_TOOL_PATH__",
+  "outputs": "__INJECT_OUTPUTS__"
+}
