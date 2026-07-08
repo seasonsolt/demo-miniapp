@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 import minium
 
@@ -12,11 +13,12 @@ class HealthSmokeTest(minium.MiniTest):
         self.assertIsNotNone(page, "小程序未启动或未获取到当前页面")
         self.capture("HEALTH-001-01-entry")
 
-        entry = page.get_element("[data-testid='health-entry']")
+        entry = page.get_element(".health-entry")
         self.assertIsNotNone(entry, "首页缺少健康检查入口")
         entry.tap()
 
+        time.sleep(1)
         health_page = self.app.get_current_page()
-        success = health_page.wait_for("[data-testid='health-success']", max_timeout=10)
+        success = health_page.wait_for(".health-success", max_timeout=10)
         self.assertTrue(success, "健康检查成功状态未展示")
         self.capture("HEALTH-001-02-assert")

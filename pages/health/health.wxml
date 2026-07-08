@@ -3,7 +3,7 @@
     <view class="title">服务健康检查</view>
     <view class="muted">当前服务：{{serviceName || "未连接"}}</view>
     <button class="primary-button" bindtap="checkHealth" loading="{{loading}}" data-testid="health-check-button">检查服务</button>
-    <view wx:if="{{state === 'success'}}" class="status status-success" data-testid="health-success">
+    <view wx:if="{{state === 'success'}}" class="status status-success health-success" data-testid="health-success">
       {{message}}
     </view>
     <view wx:elif="{{state === 'error'}}" class="status status-error" data-testid="health-error">
