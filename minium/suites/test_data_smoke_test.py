@@ -35,9 +35,10 @@ class TestDataSmokeTest(minium.MiniTest):
 
         self.app.navigate_to("/pages/index/index", params={"e2e": "1"})
         home_page = self.current_page()
-        visible_entry = home_page.wait_for(".test-data-entry", max_timeout=5)
-        self.assertTrue(visible_entry, "测试模式已登录时 Reset / Seed 入口未展示")
+        visible_entry_visible = home_page.wait_for(".test-data-entry", max_timeout=5)
+        self.assertTrue(visible_entry_visible, "测试模式已登录时 Reset / Seed 入口未展示")
         self.capture("TESTDATA-001-04-entry-visible")
+        visible_entry = home_page.get_element(".test-data-entry")
         visible_entry.tap()
 
         test_data_page = self.current_page()
